@@ -40,6 +40,8 @@ Gem::Specification.new do |s|
     json_spec << "< 2.0.0"
   elsif RUBY_VERSION =~ /^2\.[01]\./
     activesupport_spec << "< 5.0"
+  elsif RUBY_VERSION >= '2.5.0'
+    activesupport_spec << "< 7.0"
   end
 
   s.add_dependency "activesupport", *activesupport_spec
@@ -49,10 +51,14 @@ Gem::Specification.new do |s|
   s.add_development_dependency "json", *json_spec
 
   s.add_development_dependency "bundler", "~> 1.5"
+  #s.add_development_dependency "bundler", "~> 2.1"
   s.add_development_dependency "rspec", "~> 2.99"
   s.add_development_dependency "rake-compiler"
   s.add_development_dependency "tilt", "~> 2.0"
   s.add_development_dependency "oop_rails_server", ">= 0.0.24"
+  s.add_development_dependency "sqlite3", "~>1.6.9"
+  #s.add_development_dependency "sqlite3", "~>1.5.4"
+
 
   # This is because i18n >= 0.7 is incompatible with Ruby 1.8.x.
   if RUBY_VERSION =~ /^1\.8\./
