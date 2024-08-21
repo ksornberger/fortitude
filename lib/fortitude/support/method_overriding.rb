@@ -25,7 +25,7 @@ module Fortitude
       # we currently fall back to using alias_method_chain on JRuby. (You only get deprecation warnings with this
       # when running with Rails 5, which is not yet supported by JRuby anyway, at least as of this writing.)
       def override_methods(target_module, override_methods_module, feature_name, method_names)
-        if RUBY_VERSION =~ /^2\./ && (! ((RUBY_ENGINE || '').to_s.downcase.strip == 'jruby'))
+        if ( RUBY_VERSION =~ /^2\./ || RUBY_VERSION =~ /^3\./ ) && (! ((RUBY_ENGINE || '').to_s.downcase.strip == 'jruby'))
           override_methods_using_prepend(target_module, override_methods_module, feature_name, method_names)
         else
           override_methods_using_alias_method_chain(target_module, override_methods_module, feature_name, method_names)
