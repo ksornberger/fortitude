@@ -142,13 +142,23 @@ or add a "magic comment" to the source code of this widget that looks like this:
           }
 
           class_names.each do |class_name|
+            puts "-------------------"
+            puts "Class Name: " + class_name
+
             class_name = $1 if class_name =~ /^:+(.*)$/i
+            
+            puts "Class Name after: " + class_name
+
             klass = begin
               "::#{class_name}".constantize
             rescue NameError => ne
               nil
+            rescue LoadError => le
+              puts le
             end
 
+            puts "Klass = " + klass
+            
             if is_widget_class?(klass, options)
               out[:widget_class] = klass
               break
