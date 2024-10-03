@@ -142,20 +142,19 @@ or add a "magic comment" to the source code of this widget that looks like this:
           }
 
           class_names.each do |class_name|
-            puts "-------------------"
-            puts "Class Name: " + class_name
-
             class_name = $1 if class_name =~ /^:+(.*)$/i
             
-            puts "Class Name after: " + class_name
-
             klass = begin
               "::#{class_name}".constantize
             rescue NameError => ne
               nil
             rescue LoadError => le
-              puts "****** LoadError Caught"
-              p le
+              # HACK: On the upgrade to rails 3.0, a load error was being thrown here 
+              # LoadError: Unable to autoload constant Layouts::LoggedIn, expected /app/app/views/layouts/logged_in.rb to define it
+              # Upon further inspection, the class was also getting checked here as Views::Layouts::LoggedIn
+              # I think it's ok to just set klass as nil in this case, as was already done for the NameError above
+              # but this is a little concerning since I don't fully understand why the error is suddenly popping up
+              # All tests passed on the app once I made this change. - KS
               nil
             end
 

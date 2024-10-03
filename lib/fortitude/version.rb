@@ -1,3 +1,3 @@
 module Fortitude
-  VERSION = "0.9.12"
+  VERSION = "0.9.14"
 end
