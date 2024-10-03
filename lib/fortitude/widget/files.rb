@@ -157,8 +157,6 @@ or add a "magic comment" to the source code of this widget that looks like this:
               # All tests passed on the app once I made this change. - KS
               nil
             end
-
-            puts "Klass = " + klass.to_s
             
             if is_widget_class?(klass, options)
               out[:widget_class] = klass
