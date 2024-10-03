@@ -154,10 +154,12 @@ or add a "magic comment" to the source code of this widget that looks like this:
             rescue NameError => ne
               nil
             rescue LoadError => le
-              puts le
+              puts "****** LoadError Caught"
+              p le
+              nil
             end
 
-            puts "Klass = " + klass
+            puts "Klass = " + klass.to_s
             
             if is_widget_class?(klass, options)
               out[:widget_class] = klass
