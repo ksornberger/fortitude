@@ -2,6 +2,7 @@ require 'fortitude'
 require 'oop_rails_server'
 require 'helpers/system_helpers'
 require 'helpers/fortitude_rails_helpers'
+require 'bundler'
 
 RSpec.configure do |c|
   c.include ::OopRailsServer::Helpers, :type => :rails

@@ -50,7 +50,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rake", *rake_spec
   s.add_development_dependency "json", *json_spec
 
-  s.add_development_dependency "bundler", "~> 1.5"
+  s.add_development_dependency "bundler", ">= 1.5"
   #s.add_development_dependency "bundler", "~> 2.1"
   s.add_development_dependency "rspec", "~> 2.99"
   s.add_development_dependency "rake-compiler"
